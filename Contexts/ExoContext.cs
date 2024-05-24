@@ -8,7 +8,7 @@ namespace Exo.WebApi.Contexts
     public class ExoContext : DbContext
     {
         public ExoContext()
-        {
+        {     
         }
         public ExoContext(DbContextOptions<ExoContext> options) : base(options)
         {
@@ -17,19 +17,17 @@ namespace Exo.WebApi.Contexts
         {
             if(!optionsBuilder.IsConfigured)
             {
-                // Essa string de conexão depende da SUA máquina.
+                 // Essa string de conexão foi depende da SUA máquina.
                 optionsBuilder.UseSqlServer("User ID=sa; Password=1234; Server=localhost\\SQLEXPRESS2;" + "Database=ExoApi;Trusted_Connection=True;");
-
                 // Exemplo 1 de string de conexão:
-                // User ID=sa;Password=1234;Server=localhost\\SQLEXPRESS2;Database=ExoApi;-
-                // + Trusted_Connection=False;
+                // User ID=sa;Password=admin;Server=localhost;Database=ExoApi;
+                // Trusted_Connection=False;
 
                 // Exemplo 2 de string de conexão:
                 // Server=localhost\\SQLEXPRESS;Database=ExoApi;Trusted_Connection=True;
-
             }
         }
-        public DbSet<Projeto> Projetos { get; set;}
+        public DbSet<Projeto> Projetos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
-    
 }
